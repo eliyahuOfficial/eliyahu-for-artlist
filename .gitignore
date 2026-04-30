@@ -44,3 +44,10 @@ next-env.d.ts
 .context-brain.db*
 .fastembed_cache/
 .claude/
+
+# Internal application/strategy docs — kept locally, never shared publicly
+CLAUDE.md
+AGENTS.md
+OUTREACH.md
+IMAGE_PROMPTS.md
+scripts/

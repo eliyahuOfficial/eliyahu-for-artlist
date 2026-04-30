@@ -1,99 +1,118 @@
 # Eliyahu — for Artlist
 
-A Next.js 16 landing page built as the application for the Frontend Developer role on the Marketing Technology team at Artlist.
+A Next.js 16 landing page built as the application for the **Frontend Developer · Marketing Technology** role at Artlist.
 
-## What it is
+The page itself is the work sample. Everything you'd ask a marketing-tech candidate to demonstrate is in the source.
 
-Three things in one project:
+## What's here
 
-1. **A landing page** at `/` — the application proper. Hero, "What I built solo" (three product cards), preview of the mock launch page, "Why me" reasons, contact CTA. Hebrew + English with RTL toggle. Framer Motion for entrance animations.
+- **`/`** — the application landing page. Hero, featured projects (FELORA · Lumood · Project Triton), the AI creator stack, "Why me" reasons, contact CTA. Bilingual EN / HE with full RTL support.
+- **`/launch`** — a hypothetical Artlist Sync™ product launch page. Mouse-tilt timeline mock, GSAP ScrollTrigger pinned horizontal scroll across four steps, A/B variant via `?v=a|b`, ISR-backed pricing.
+- **`/api/sync-pricing`** — same pricing module exposed as a JSON endpoint. Demonstrates ISR (`revalidate: 60`).
+- **`/opengraph-image`** — static cinematic OG image (1920×1080) baked at build.
+- **`/sitemap.xml`** · **`/robots.txt`** — SEO essentials.
 
-2. **A mock product launch page** at `/launch` — a hypothetical "Artlist Sync" tool (auto-music-to-video sync). Pinned horizontal scroll storytelling with **GSAP ScrollTrigger**, an ISR-fetched pricing table revalidating every 60 seconds, and an A/B variant served via `?v=a|b` URL parameter. Full SSG.
-
-3. **A reproducible artifact** — clean source so a hiring engineer can read every decision.
+Every route renders as `○ (Static)` in `next build` output.
 
 ## Tech
 
-- **Next.js 16** (App Router, Turbopack)
-- **React 19**
-- **TypeScript** (strict)
-- **Tailwind CSS v4**
-- **Framer Motion** for entrance + interaction animations
-- **GSAP + ScrollTrigger** for the launch page's pinned scroll narrative
-- **Lucide** icons
-- **next/og** for a generated Open Graph image
-- **Vercel Analytics**
+| | |
+| --- | --- |
+| **Framework** | Next.js 16.2 · App Router · Turbopack |
+| **UI** | React 19 · TypeScript (strict) · Tailwind CSS v4 |
+| **Animation** | Framer Motion 12 (entrances + interactions) · GSAP 3 + ScrollTrigger (pinned-scroll storytelling) |
+| **Typography** | Geist Sans + Fraunces (Latin) · Heebo + Frank Ruhl Libre (Hebrew) — per-character fallback chain plus an `html[dir="rtl"]` token override so Hebrew always renders in dedicated Hebrew faces |
+| **i18n** | Home-rolled client-side `LocaleProvider` with `localStorage` persistence; updates `<html lang dir>` on toggle. Light, no `next-intl` overhead for a single-page site. |
+| **Imagery** | Editorial fashion photography generated via **FAL FLUX-Pro 1.1 Ultra** (hero / CTA backgrounds + per-step cards on /launch); existing portrait re-backgrounded via **FAL FLUX Kontext** image-to-image edit |
+| **Icons** | Lucide React + a custom inline `GithubMark` |
+| **Analytics** | `@vercel/analytics` |
+
+## Design system (scoped to `@theme`)
+
+The whole site uses a Magnific-inspired palette — paper / wine / magenta on near-black ink. Tokens live in [`src/app/globals.css`](src/app/globals.css):
+
+```css
+--color-paper: #f0e5d2;       /* cream parchment */
+--color-paper-warm: #ecddc0;
+--color-ink: #1a0e0e;
+--color-wine: #4a1626;
+--color-wine-deep: #2a0a14;
+--color-magenta: #e8398f;
+--color-card-dark: #181216;
+```
+
+Custom utilities — `.launch-display`, `.launch-eyebrow`, `.launch-card-dark`, `.launch-cta-pink`, `.launch-hero-bg` — are defined in the same file so individual components stay declarative.
 
 ## Stack decisions worth flagging
 
-- The launch page is **fully static** (`revalidate: 60`). Pricing data is imported from a typed module, and the same module backs `/api/sync-pricing` — so the API route demonstrates ISR, but the page doesn't need a network round-trip at request time.
-- A/B variant lives in a **client child component** behind `<Suspense>` so the parent page can stay SSG. Switching to `searchParams` on the server would have flipped it to dynamic rendering.
-- **Locale state is client-side** with a localStorage fallback. For a single-page application this beats `next-intl` routing on bundle size and complexity. The `<html lang dir>` attributes are updated on toggle so SEO tools see the right language.
-- **OG image** is generated at build via `app/opengraph-image.tsx` — no PNG to maintain.
-- **Reduced motion** is respected throughout: every animation is gated by `prefers-reduced-motion`.
+- **Static rendering is non-negotiable.** Every route in the build output is `○ (Static)`. Pricing comes from a typed module ([`src/data/pricing.ts`](src/data/pricing.ts)) and is consumed by both the page and the API route — so the API demonstrates ISR without the page ever paying for a request-time fetch.
+- **A/B variants on /launch live in a client child** behind `<Suspense>`. Reading `useSearchParams` at the page level would flip it to dynamic rendering and break the static guarantee. The Suspense boundary keeps the parent SSG.
+- **GSAP pin distance is computed against `window.innerWidth`,** not the track's own clientWidth. The track is `width: max-content`, so its `scrollWidth` and `clientWidth` are identical and would yield distance = 0. Comparing to the viewport is what makes the horizontal scroll fire.
+- **Hebrew typography uses Tailwind v4 `@theme` token swapping.** `--font-sans` and `--font-display` are Latin-first by default and are redefined inside `html[dir="rtl"]` to put Heebo / Frank Ruhl Libre at the front of the chain. This guarantees Hebrew renders in dedicated faces regardless of which utility class is applied.
+- **Body has no `overflow-x: hidden`.** Section-level clipping is on individual sections; the body stays free so GSAP `pin` works on iOS Safari. Global `overflow-x: hidden` is the number-one cause of broken ScrollTrigger pins, so the project documents this in the CSS itself.
+- **OG image is a static asset** (`/og-magnific.jpg`) replacing the earlier dynamic Satori route — same end result, lower runtime cost.
+- **Reduced motion is respected.** GSAP setup checks `matchMedia("(prefers-reduced-motion: reduce)")` and bails before registering triggers. Tailwind reduced-motion variants strip transition durations site-wide via the global CSS rule.
+
+## Lighthouse · production target
+
+- Performance ≥ 95
+- Accessibility 100
+- Best Practices 100
+- SEO 100
 
 ## Run locally
 
 ```bash
 npm install
-npm run dev          # http://localhost:3000
+npm run dev            # http://localhost:3000
 npm run build && npm start
 ```
 
-`NEXT_PUBLIC_SITE_URL` is optional in development. Set it on Vercel to your production domain for canonical URLs and the JSON-LD `Person` schema.
+No env vars required for development. For production set:
 
-## Deploy
+```
+NEXT_PUBLIC_SITE_URL=https://your-domain.tld
+```
 
-Push to GitHub. Connect to Vercel. That's it — no env vars required for a working preview. Add `NEXT_PUBLIC_SITE_URL=https://your-domain.tld` for production.
+This populates canonical URLs and the JSON-LD `Person` schema in [`src/app/layout.tsx`](src/app/layout.tsx).
 
-## File map (the load-bearing parts)
+## File map
 
 ```
 src/
 ├── app/
-│   ├── layout.tsx                 root metadata, JSON-LD Person, Aurora background
-│   ├── page.tsx                   composes Hero → WhatIBuilt → MockLaunchPreview → WhyMe → CTA
-│   ├── globals.css                design tokens (Tailwind v4 @theme), aurora, gradients
-│   ├── opengraph-image.tsx        runtime OG image generator
-│   ├── sitemap.ts / robots.ts     SEO essentials
-│   ├── api/sync-pricing/route.ts  ISR demo endpoint
+│   ├── layout.tsx                root metadata · JSON-LD · font loading
+│   ├── page.tsx                  Hero → WhatIBuilt → MockLaunchPreview → AboutMe → WhyMe → CTA
+│   ├── globals.css               Tailwind v4 @theme + custom utilities
+│   ├── opengraph-image.tsx       legacy dynamic OG (kept as fallback)
+│   ├── sitemap.ts · robots.ts    SEO
+│   ├── api/sync-pricing/route.ts ISR demo endpoint
 │   └── launch/
-│       ├── page.tsx               static launch page with ISR pricing
-│       ├── layout.tsx             scoped metadata
-│       └── _components/           hero · scroll-pinned demo · features · pricing · CTA
+│       ├── page.tsx              the Artlist Sync™ launch page (SSG + ISR)
+│       ├── layout.tsx            scoped metadata + cream-themed wrapper
+│       └── _components/          hero · pinned scroll demo · features · pricing · CTA · top banner
 ├── components/
-│   ├── motion/                    Reveal, MagneticButton — the motion primitives
-│   ├── shell/                     Navbar, Footer, LangSwitch
-│   ├── icons/GithubMark.tsx       custom inline GitHub mark
-│   └── sections/                  the five sections of the main page
+│   ├── motion/                   Reveal · MagneticButton
+│   ├── shell/                    Navbar (scroll-aware) · Footer · LangSwitch
+│   ├── icons/GithubMark.tsx      inline mark (Lucide v1.x dropped brand icons)
+│   └── sections/                 home page sections
 ├── content/
-│   ├── copy.ts                    every line of marketing copy, en + he
-│   └── projects.ts                FELORA / MoodAI / Project Triton metadata
-├── data/pricing.ts                source of truth for /launch pricing
+│   ├── copy.ts                   every marketing string, EN + HE
+│   └── projects.ts               FELORA · Lumood · Project Triton metadata
+├── data/pricing.ts               source of truth for /launch pricing
 └── lib/
-    ├── site.ts                    name, links, locale tokens — fill placeholders here
-    ├── locale-context.tsx         RTL/LTR toggle with localStorage persistence
-    └── cn.ts                      classnames merge
+    ├── site.ts                   personal links, locale tokens
+    ├── locale-context.tsx        RTL/LTR toggle + localStorage persistence
+    └── cn.ts                     tailwind-merge wrapper
 ```
-
-## Before publishing
-
-Edit `src/lib/site.ts` and replace the `TODO` placeholders with:
-
-- Production URL once Vercel gives you one
-- LinkedIn URL
-- GitHub URL
-- WhatsApp number (digits only with country code)
-- Calendly URL (or leave empty — the CTA hides the "Book a call" button if empty)
-- SoundCloud / Spotify artist links
-
-`OUTREACH.md` contains pre-written cold messages (LinkedIn DM, email, public LinkedIn post) in Hebrew and English. Replace `{{LANDING_URL}}`, `{{LAUNCH_URL}}`, `{{REPO_URL}}`, `{{RECRUITER_NAME}}`, `{{HM_NAME}}` before sending.
 
 ## Author
 
-**Eliyahu Levi** — Tel Aviv. Front-end engineer and music producer (Eliyahu IL).
+**Eliyahu Levi** — Tel Aviv.
+Frontend developer · music producer (Eliyahu IL).
 
-- eliyahuofficialmusic@gmail.com
-- [eliyahu-for-artlist.vercel.app](https://eliyahu-for-artlist.vercel.app)
+- [eliyahuofficialmusic@gmail.com](mailto:eliyahuofficialmusic@gmail.com)
+- [linkedin.com/in/eliyahuofficial](https://www.linkedin.com/in/eliyahuofficial/)
+- [github.com/eliyahuOfficial](https://github.com/eliyahuOfficial)
 
-This page is a one-purpose portfolio — built specifically as the application package for Artlist. Everything in it is honest: the projects exist, the numbers are counted from the code, the page itself is the proof of work.
+The page is a single-purpose application. Everything in it is honest: the projects exist, the numbers come from the codebase, the page itself is the proof of work.
