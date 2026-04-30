@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
@@ -11,39 +12,57 @@ export function LaunchCTA() {
   return (
     <section
       id="early-access"
-      className="relative mx-auto w-full max-w-6xl px-5 py-28 md:py-40"
+      className="relative isolate overflow-hidden text-paper"
     >
-      <div className="relative overflow-hidden rounded-[40px] border border-white/10 bg-gradient-to-br from-fuchsia-500/20 via-violet-600/15 to-orange-500/20 p-10 md:p-16">
-        <div className="absolute inset-0 -z-10 bg-black/40" />
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/launch-cta-fashion.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-linear-to-r from-wine-deep/85 via-wine-deep/45 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-wine-deep/55 via-transparent to-wine-deep/20" />
+      </div>
+
+      <div className="relative z-20 mx-auto w-full max-w-7xl px-6 py-32 md:py-48">
         <Reveal>
-          <p className="text-[11px] uppercase tracking-[0.24em] text-white/65">
+          <p className="text-[11px] uppercase tracking-[0.24em] text-paper/65">
             Early access
           </p>
         </Reveal>
+
         <Reveal delay={0.05}>
-          <h2 className="mt-4 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-            Cut to the music. Stop chasing it.
+          <h2 className="launch-display mt-6 max-w-4xl text-balance text-[48px] sm:text-[64px] md:text-[96px] lg:text-[120px]">
+            Be Sync.
           </h2>
         </Reveal>
 
         <Reveal delay={0.1}>
+          <p className="mt-7 max-w-xl text-[17px] leading-relaxed text-paper/75 md:text-lg">
+            Cut to the music. Stop chasing it. We&apos;ll email you when your studio&apos;s slot opens — no spam, no drip, just one note when it&apos;s ready.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.18}>
           <form
             onSubmit={(e) => {
               e.preventDefault();
               setSubmitted(true);
             }}
-            className="mt-9 flex max-w-xl flex-col gap-3 sm:flex-row"
+            className="mt-10 flex max-w-xl flex-col gap-3 sm:flex-row"
           >
             <input
               type="email"
               required
               placeholder="you@studio.io"
               aria-label="Work email"
-              className="h-12 flex-1 rounded-full border border-white/10 bg-black/40 px-5 text-sm text-white placeholder:text-white/35 focus:border-fuchsia-400 focus:outline-none focus:ring-0"
+              className="h-13 flex-1 rounded-full border border-paper/20 bg-paper/8 px-6 py-4 text-sm text-paper placeholder:text-paper/40 backdrop-blur-sm focus:border-magenta focus:outline-none focus:ring-0"
             />
             <button
               type="submit"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-semibold text-black transition-colors hover:bg-white/90"
+              className="launch-cta-pink inline-flex h-13 items-center justify-center gap-2 px-7 py-4 text-sm font-semibold"
             >
               {submitted ? (
                 <>
@@ -60,19 +79,20 @@ export function LaunchCTA() {
           </form>
         </Reveal>
 
-        <Reveal delay={0.18}>
+        <Reveal delay={0.24}>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: submitted ? 1 : 0.5 }}
             transition={{ duration: 0.4 }}
-            className="mt-5 text-xs text-white/55"
+            className="mt-5 text-xs text-paper/55"
           >
             {submitted
               ? "Thanks. In a real build this would call /api/early-access and write to a CRM."
-              : "We'll email you when your studio's slot opens. No spam, no drip — just one note when it's ready."}
+              : "Trusted by 1M+ creative pros — coca-cola · ogilvy · r/ga · wonder · guess. (None of them, actually. This is a mock.)"}
           </motion.p>
         </Reveal>
       </div>
     </section>
   );
 }
+

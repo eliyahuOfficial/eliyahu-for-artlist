@@ -23,12 +23,12 @@ export const projects: Project[] = [
     href: "https://felora.app",
     image: "/felora.jpg",
     tagline: {
-      en: "The multi-tenant AI video SaaS I shipped alone.",
-      he: "ה-SaaS וידאו AI מרובה-לקוחות שהשקתי לבד.",
+      en: "AI video SaaS. One developer. Live in production.",
+      he: "ה-SaaS וידאו AI. מפתח אחד. מוצר חי.",
     },
     description: {
-      en: "Workspace platform that generates social-media content with a consistent AI character across every scene — beach, restaurant, retail, spa. Stripe billing with tiered credits, role-based admin with audit logs, RTL i18n, BullMQ-backed video render queue, TikTok OAuth, ContentStudioPage at 81KB of conditional rendering. Live, paying customers, no shortcuts.",
-      he: "פלטפורמת workspace שמייצרת תוכן רשתות חברתיות עם דמות AI עקבית בכל סצנה — חוף, מסעדה, חנות, ספא. חיוב Stripe עם קרדיטים מדורגים, ניהול הרשאות עם audit logs, i18n עם RTL, תור רינדור וידאו על BullMQ, TikTok OAuth, ContentStudioPage באורך 81KB של רנדור מותנה. חי, לקוחות משלמים, בלי קיצורי דרך.",
+      en: "Workspace platform that generates social-media content with a consistent AI character across every scene — beach, restaurant, retail, spa. End-to-end checkout with tiered credits, role-based admin with audit logs, RTL i18n, BullMQ-backed video render queue, TikTok OAuth, ContentStudioPage at 81KB of conditional rendering. Live, no shortcuts.",
+      he: "פלטפורמת workspace שמייצרת תוכן רשתות חברתיות עם דמות AI עקבית בכל סצנה — חוף, מסעדה, חנות, ספא. תשלומים עובדים מקצה לקצה עם קרדיטים מדורגים, ניהול הרשאות עם audit logs, i18n עם RTL, תור רינדור וידאו על BullMQ, TikTok OAuth, ContentStudioPage באורך 81KB של רנדור מותנה. חי, בלי קיצורי דרך.",
     },
     stack: [
       "React 18",
@@ -42,7 +42,6 @@ export const projects: Project[] = [
       "BullMQ",
       "Remotion",
       "FAL AI",
-      "Stripe",
       "MongoDB",
     ],
     stats: [
@@ -63,8 +62,8 @@ export const projects: Project[] = [
       he: "PWA חברתית לשיתוף מצב-רוח עם WebRTC",
     },
     description: {
-      en: "Capture a mood + location → AI generates a Polaroid + caption. Real-time video calls, push notifications, full SEO/OG/JSON-LD, Stripe subscriptions. Framer Motion drives the reveal animations.",
-      he: "אוספים מצב-רוח + מיקום → AI מחולל פולארויד + כותרת. שיחות וידאו בזמן אמת, push notifications, SEO/OG/JSON-LD מלא, מנויי Stripe. Framer Motion מפעיל את אנימציות החשיפה.",
+      en: "Capture a mood + location → AI generates a Polaroid + caption. Real-time video calls, push notifications, full SEO/OG/JSON-LD. Framer Motion drives the reveal animations.",
+      he: "אוספים מצב-רוח + מיקום → AI מחולל פולארויד + כותרת. שיחות וידאו בזמן אמת, push notifications, SEO/OG/JSON-LD מלא. Framer Motion מפעיל את אנימציות החשיפה.",
     },
     stack: [
       "React 18",
@@ -76,7 +75,6 @@ export const projects: Project[] = [
       "Leaflet",
       "html2canvas",
       "PWA",
-      "Stripe",
       "Cloudinary",
       "VAPID",
     ],
@@ -91,6 +89,7 @@ export const projects: Project[] = [
   {
     slug: "triton",
     name: "Project Triton",
+    image: "/triton.jpg",
     tagline: {
       en: "AI website builder + 322-section template library",
       he: "בונה אתרים AI + ספריית 322 תבניות סקשן",

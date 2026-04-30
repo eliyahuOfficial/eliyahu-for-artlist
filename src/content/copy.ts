@@ -22,13 +22,12 @@ export const copy = {
     title_b: t("I ship marketing systems", "אני משיק מערכות שיווקיות"),
     title_c: t("that feel like products.", "שמרגישות כמו מוצרים."),
     subtitle: t(
-      "FELORA is the proof: a multi-tenant AI video SaaS I built alone — Stripe billing, multi-workspace admin, video render pipeline, RTL i18n, 164 TypeScript files, paying customers. The page you're reading was built in three days with Next.js 16, GSAP, and Framer Motion. Apply that energy to Artlist's campaign roadmap.",
-      "FELORA היא ההוכחה: SaaS וידאו AI מרובה-לקוחות שבניתי לבד — Stripe, ניהול workspaces, פייפליין רינדור וידאו, i18n עם RTL, 164 קבצי TypeScript, לקוחות משלמים. הדף שאתם קוראים נבנה בשלושה ימים ב-Next.js 16, GSAP ו-Framer Motion. תיישמו את האנרגיה הזו על מפת הקמפיינים של Artlist.",
+      "FELORA is the proof: a multi-tenant AI video SaaS I built alone — multi-workspace admin, video render pipeline, RTL i18n, end-to-end checkout flow, 164 TypeScript files. The page you're reading was built in a day with Next.js 16, GSAP, and Framer Motion. Apply that energy to Artlist's campaign roadmap.",
+      "FELORA היא ההוכחה: SaaS וידאו AI שבניתי לבד — ניהול workspaces, פייפליין רינדור וידאו, i18n עם RTL, תשלומים עובדים מקצה לקצה, 164 קבצי TypeScript. הדף שאתם קוראים נבנה ביום אחד ב-Next.js 16, GSAP ו-Framer Motion. תיישמו את האנרגיה הזו על מפת הקמפיינים של Artlist.",
     ),
     cta_primary: t("See FELORA & friends", "ראו את FELORA וחברים"),
     cta_secondary: t("Watch the launch page mock", "צפו בדף ההשקה"),
     cta_felora: t("FELORA · live", "FELORA · חי"),
-    audio_label: t("Listening: Eliyahu (IL) — original release", "מאזין כרגע: Eliyahu (IL) — שחרור מקורי"),
   },
 
   built: {
@@ -40,8 +39,8 @@ export const copy = {
     ),
     felora_badge: t("Featured · Solo-built · Live in production", "ראשי · נבנה לבד · חי בפרודקשן"),
     felora_pull: t(
-      "Stripe billing. Multi-workspace admin. Video render queue. RTL i18n. AI character that stays consistent across every scene. 164 TypeScript files, max-warnings 0, customers paying. This is the kind of work I'd bring to your campaign tooling.",
-      "חיוב Stripe. ניהול workspaces. תור רינדור וידאו. i18n עם RTL. דמות AI שנשארת עקבית בכל סצנה. 164 קבצי TypeScript, max-warnings 0, לקוחות משלמים. זאת העבודה שהייתי מביא לכלים השיווקיים שלכם.",
+      "Checkout flow shipped end-to-end. Multi-workspace admin. Video render queue. RTL i18n. AI character that stays consistent across every scene. 164 TypeScript files, max-warnings 0. This is the kind of work I'd bring to your campaign tooling.",
+      "תשלומים עובדים מקצה לקצה. ניהול workspaces. תור רינדור וידאו. i18n עם RTL. דמות AI שנשארת עקבית בכל סצנה. 164 קבצי TypeScript, max-warnings 0. זאת העבודה שהייתי מביא לכלים השיווקיים שלכם.",
     ),
     client_eyebrow: t(
       "Plus paid client work · WordPress + Elementor Pro",
@@ -49,7 +48,16 @@ export const copy = {
     ),
     client_body: t(
       "Working business sites with Hebrew RTL, conversion sections, contact funnels, SEO foundations. Live example →",
-      "אתרי לקוחות עובדים בעברית עם RTL, סקציות המרה, פאנלי יצירת קשר, ובסיס SEO. דוגמה חיה ←",
+      "אתרי עסקים עובדים בעברית עם RTL, סקציות המרה, פאנלי יצירת קשר, ובסיס SEO. דוגמה חיה ←",
+    ),
+    client_volume_number: t("150+", "150+"),
+    client_volume_main: t(
+      "sites shipped in a salaried role.",
+      "אתרים שהשקתי כשכיר.",
+    ),
+    client_volume_sub: t(
+      "Same hands, scaled output.",
+      "אותן ידיים, פלט במאסה.",
     ),
   },
 
@@ -72,23 +80,26 @@ export const copy = {
 
   why: {
     eyebrow: t("Why me, in 60 seconds", "למה אני, ב-60 שניות"),
-    title: t("The same hands that mix a track ship a feature.", "אותן ידיים שמערבלות טראק משיקות פיצ'ר."),
+    title: t(
+      "I write the code. I make the music. I license the stock. I am your customer profile.",
+      "אני כותב את הקוד. אני יוצר את המוזיקה. אני קונה את הסטוק. אני הלקוח שלכם.",
+    ),
     points: [
       t(
-        "I am Artlist's customer profile. I write and release music as Eliyahu (IL), I edit my own videos in CapCut, I license stock from platforms like yours. I know — viscerally — what creators come to a marketing page looking for, because I am the one looking for it.",
-        "אני בדיוק הפרופיל של לקוח Artlist. אני כותב ומשחרר מוזיקה תחת Eliyahu (IL), עורך וידאו ב-CapCut, ולוקח רישיונות סטוק מפלטפורמות כמו שלכם. אני יודע — מהבטן — מה יוצרים מחפשים בדף שיווקי, כי אני זה שמחפש.",
+        "I'm Artlist's customer profile — and I ship the AI creator stack. I produce music as Eliyahu (IL) in Cubase. I integrate Runway, Suno, ElevenLabs, HeyGen, Sync Labs, Kling, BytePlus SeeDance, FAL FLUX, Gemini, and OpenAI into FELORA every day. I know what creators come to a marketing page looking for, because I'm both the creator and the engineer behind the tooling.",
+        "אני הפרופיל של לקוח Artlist — ואני משיק את הסטאק היוצר של AI. יוצר מוזיקה תחת Eliyahu (IL) ב-Cubase. משלב Runway, Suno, ElevenLabs, HeyGen, Sync Labs, Kling, BytePlus SeeDance, FAL FLUX, Gemini ו-OpenAI לתוך FELORA כל יום. אני יודע מה יוצרים מחפשים בדף שיווקי, כי אני גם היוצר וגם המהנדס מאחורי הכלים.",
       ),
       t(
-        "I shipped FELORA — a multi-tenant SaaS with Stripe, multi-workspace admin, role-based access, AI video pipeline, RTL i18n, and a tiered credit system — alone. 164 TypeScript files, max-warnings 0, no shortcuts. The product is live. Right now I'm building the consumer app for Iconiq during the day.",
-        "השקתי את FELORA — SaaS מרובה-לקוחות עם Stripe, ניהול workspace, הרשאות לפי תפקיד, פייפליין וידאו AI, i18n עם RTL, ומערכת קרדיטים מדורגת — לבד. 164 קבצי TypeScript, max-warnings 0, בלי קיצורי דרך. המוצר חי. ביום אני בונה את האפליקציה הצרכנית של Iconiq.",
+        "I shipped FELORA solo — multi-tenant SaaS, end-to-end checkout, role-based admin, AI video pipeline, BullMQ render queue, RTL i18n, tiered credits. 164 TypeScript files, zero lint warnings, live in production. Built around a day job and a music release calendar.",
+        "השקתי את FELORA לבד — SaaS, תשלומים מקצה לקצה, ניהול הרשאות, פייפליין וידאו AI, תור רינדור על BullMQ, i18n עם RTL, קרדיטים מדורגים. 164 קבצי TypeScript, אפס אזהרות lint, בפרודקשן. נבנה במקביל למשרה מלאה וללוח שחרורי מוזיקה.",
       ),
       t(
         "Marketing technology is exactly where I live. I build paid client websites in WordPress + Elementor Pro, I built Project Triton — a 322-template landing-page generator — and I've shipped SEO meta, OG, JSON-LD, and conversion funnels not as theory but because the page needed them by Friday.",
         "Marketing Technology זה בדיוק הבית שלי. אני בונה אתרי לקוחות בתשלום ב-WordPress + Elementor Pro, בניתי את Project Triton — גנרטור עם 322 תבניות לדפי נחיתה — והשקתי SEO, OG, JSON-LD ופאנלי המרה לא כתאוריה — כי הדף היה צריך אותם עד יום שישי.",
       ),
       t(
-        "I'm closing the gaps in public. Five years writing code (three before HackerU, two since). My production stack is React + Vite, not Next.js — so I built this very page in Next.js 16 with App Router, SSG, ISR, GSAP, and Framer Motion. The gap closes faster than the hiring cycle.",
-        "אני סוגר את הפערים מול כולם. חמש שנות קוד (שלוש לפני HackerU, שתיים אחרי). הסטאק בפרודקשן שלי הוא React + Vite, לא Next.js — אז בניתי את הדף הזה בעצמו ב-Next.js 16 עם App Router, SSG, ISR, GSAP, ו-Framer Motion. הפער נסגר מהר יותר ממחזור הגיוס.",
+        "I'm closing the gap in public. Five years writing code — three self-taught before HackerU, two since. My production stack is React + Vite. So I built this very page in Next.js 16 with App Router, SSG, ISR, GSAP, and Framer Motion. The gap closes faster than the hiring cycle.",
+        "אני סוגר את הפער בפומבי. חמש שנות קוד — שלוש מהן באוטודידקטיות לפני HackerU, שתיים אחרי. הסטאק בפרודקשן שלי הוא React + Vite. אז בניתי את הדף הזה ב-Next.js 16 עם App Router, SSG, ISR, GSAP, ו-Framer Motion. הפער נסגר מהר יותר ממחזור הגיוס.",
       ),
     ],
   },
@@ -96,17 +107,17 @@ export const copy = {
   about: {
     eyebrow: t("About me", "קצת עליי"),
     title: t(
-      "Frontend by day. Music by night. Marketing technology in between.",
-      "פרונט-אנד ביום. מוזיקה בלילה. Marketing Technology בין לבין.",
+      "Code. Music. Marketing technology. Same hands.",
+      "קוד. מוזיקה. Marketing Technology. אותן ידיים.",
     ),
     body: t(
-      "I'm Eliyahu Levi — based in Tel Aviv, building consumer features at Iconiq for the past year. Before that I shipped FELORA solo, built paying client sites with WordPress + Elementor, planned an AI website builder (Project Triton) with 322 hand-coded section templates, and kept a music release schedule under Eliyahu (IL). Multidisciplinary isn't a tagline — it's how I think about every page I ship.",
-      "שמי אליהו לוי — תל אביב, השנה האחרונה אני בונה פיצ'רים צרכניים ב-Iconiq. קודם לכן השקתי את FELORA לבד, בניתי אתרי לקוחות בתשלום ב-WordPress + Elementor, תכננתי בונה אתרים AI (Project Triton) עם 322 תבניות סקשן כתובות יד, ושמרתי על לוח שחרורי מוזיקה תחת Eliyahu (IL). מולטי-דיסציפלינארי זה לא tagline — זאת הדרך שבה אני חושב על כל דף שאני משחרר.",
+      "I'm Eliyahu Levi — based in Tel Aviv. Beyond a year of building consumer features as a salaried frontend developer, I shipped FELORA solo, built paying client sites with WordPress + Elementor, planned an AI website builder (Project Triton) with 322 hand-coded section templates, and kept a music release schedule under Eliyahu (IL). Multidisciplinary isn't a tagline — it's how I think about every page I ship.",
+      "שמי אליהו לוי — תל אביב. מעבר לשנה של בניית פיצ'רים צרכניים כמפתח פרונט שכיר, השקתי את FELORA לבד, בניתי אתרי לקוחות בתשלום ב-WordPress + Elementor, תכננתי בונה אתרים AI (Project Triton) עם 322 תבניות סקשן כתובות יד, ושמרתי על לוח שחרורי מוזיקה תחת Eliyahu (IL). מולטי-דיסציפלינארי זה לא tagline — זאת הדרך שבה אני חושב על כל דף שאני משחרר.",
     ),
     stat_years_label: t("Coding", "קוד"),
     stat_years_value: t("5 years (3 pre-HackerU)", "5 שנים (3 לפני HackerU)"),
     stat_role_label: t("Now", "עכשיו"),
-    stat_role_value: t("1 year @ Iconiq", "שנה ב-Iconiq"),
+    stat_role_value: t("1 year salaried", "שנה כמפתח שכיר"),
     stat_ship_label: t("Solo products shipped", "מוצרים שהשקתי לבד"),
     stat_ship_value: t("3 (FELORA · MoodAI · Triton)", "3 (FELORA · MoodAI · Triton)"),
     releases: t("Releases as Eliyahu (IL)", "שחרורים בתור Eliyahu (IL)"),
@@ -118,8 +129,8 @@ export const copy = {
     eyebrow: t("If any of this resonated", "אם משהו מזה דיבר אליכם"),
     title: t("Let's spend 30 minutes together.", "בואו ניפגש ל-30 דקות."),
     subtitle: t(
-      "I'm in Tel Aviv, available evenings and Sundays for a first call. Bring a hard problem from your roadmap — I'll come with a sketch.",
-      "אני בתל אביב, פנוי לערבים וימי ראשון לשיחה ראשונה. תבואו עם בעיה אמיתית מהרודמאפ שלכם — אני אבוא עם סקיצה.",
+      "I'm in Tel Aviv. Send a time that works for you — I'll make it work for me.",
+      "אני בתל אביב. תשלחו זמן שנוח לכם — אני אתאם את עצמי.",
     ),
     btn_meet: t("Book a 30-min call", "תיאום שיחה (30 דק')"),
     btn_whatsapp: t("Or WhatsApp", "או WhatsApp"),

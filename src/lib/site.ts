@@ -18,9 +18,9 @@ export const site = {
 
   artistAlias: "Eliyahu (IL)",
   yearsCoding: 5,
-  currentRole: "Frontend developer at Iconiq",
+  currentRole: "Frontend developer",
   location: "Tel Aviv, Israel",
-  photo: "/eliyahu.jpg",
+  photo: "/eliyahu-bg.jpg",
 } as const;
 
 export type Locale = "en" | "he";

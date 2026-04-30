@@ -13,9 +13,26 @@
   --color-brand-3: #ff8b3d;
   --color-brand-4: #5cf6ff;
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-fraunces);
+  /* Launch (Magnific-style) palette — used on /launch route only */
+  --color-paper: #f0e5d2;
+  --color-paper-warm: #ecddc0;
+  --color-paper-deep: #d9c8a8;
+  --color-ink: #1a0e0e;
+  --color-ink-soft: #2e1d1d;
+  --color-ink-muted: #6a5252;
+  --color-wine: #4a1626;
+  --color-wine-deep: #2a0a14;
+  --color-wine-light: #6e2236;
+  --color-magenta: #e8398f;
+  --color-magenta-bright: #ff1f8f;
+  --color-card-dark: #181216;
+
+  /* Per-character fallback: Latin font first, Hebrew font second.
+     The browser uses Geist/Fraunces for Latin chars (which have glyphs)
+     and Heebo/Frank Ruhl Libre for Hebrew chars (which Latin fonts don't cover). */
+  --font-sans: var(--font-geist-sans), var(--font-heebo), Arial, Helvetica, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+  --font-display: var(--font-fraunces), var(--font-frank-ruhl), Georgia, serif;
 }
 
 :root {
@@ -24,20 +41,26 @@
 
 html,
 body {
-  background: var(--color-background);
-  color: var(--color-foreground);
+  background: var(--color-paper);
+  color: var(--color-ink);
 }
 
 html[dir="rtl"] {
   font-feature-settings: "ss01";
+  /* In Hebrew mode, swap the font tokens so Hebrew fonts come first.
+     This guarantees Heebo / Frank Ruhl Libre are used regardless of
+     where the utility class is applied. */
+  --font-sans: var(--font-heebo), system-ui, Arial, sans-serif;
+  --font-display: var(--font-frank-ruhl), Georgia, serif;
 }
 
 body {
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
   text-rendering: optimizeLegibility;
+  /* NOTE: do NOT add `overflow-x: hidden` to body or html — it breaks GSAP ScrollTrigger pin.
+     If a section needs horizontal clipping, add `overflow-hidden` on that section. */
 }
 
 /* Aurora — subtle ambient gradient that drifts behind everything */
@@ -150,6 +173,78 @@ body {
 /* Section pacing utility */
 section {
   scroll-margin-top: 6rem;
+}
+
+/* ==========================================================================
+   Launch theme (Magnific-inspired) — scoped via .launch-paper wrapper
+   ========================================================================== */
+.launch-paper {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
+.launch-paper .aurora,
+.launch-paper .grain {
+  display: none;
+}
+
+/* Display serif headlines used on /launch and home.
+   Per-character fallback: Fraunces (Latin) + Frank Ruhl Libre (Hebrew). */
+.launch-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.96;
+}
+
+/* Magnific-style accent text underline (the magenta dot prefix) */
+.launch-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 500;
+  color: var(--color-ink-muted);
+}
+.launch-eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--color-magenta);
+}
+
+/* Dark card variant on cream */
+.launch-card-dark {
+  background: var(--color-card-dark);
+  color: var(--color-paper);
+  border-radius: 28px;
+}
+
+/* Magnific-pink CTA */
+.launch-cta-pink {
+  background: var(--color-magenta);
+  color: white;
+  font-weight: 600;
+  border-radius: 9999px;
+  transition: background 200ms ease, transform 200ms ease;
+}
+.launch-cta-pink:hover {
+  background: var(--color-magenta-bright);
+}
+
+/* Wine gradient hero backdrop */
+.launch-hero-bg {
+  background:
+    radial-gradient(80% 80% at 75% 35%, rgba(232, 57, 143, 0.35), transparent 60%),
+    radial-gradient(60% 60% at 15% 80%, rgba(74, 22, 38, 0.6), transparent 70%),
+    linear-gradient(135deg, var(--color-wine) 0%, var(--color-wine-deep) 100%);
+}
+
+/* Hairline divider on cream */
+.launch-rule {
+  border-top: 1px solid rgba(26, 14, 14, 0.08);
 }
 
 /* Focus rings */

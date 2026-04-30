@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Fraunces } from "next/font/google";
+import { Geist, Geist_Mono, Fraunces, Heebo, Frank_Ruhl_Libre } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { LocaleProvider } from "@/lib/locale-context";
@@ -21,6 +21,20 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
   weight: ["400", "600", "700"],
+  display: "swap",
+});
+
+const heebo = Heebo({
+  variable: "--font-heebo",
+  subsets: ["latin", "hebrew"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const frankRuhlLibre = Frank_Ruhl_Libre({
+  variable: "--font-frank-ruhl",
+  subsets: ["latin", "hebrew"],
+  weight: ["400", "500", "700", "900"],
   display: "swap",
 });
 
@@ -65,12 +79,21 @@ export const metadata: Metadata = {
     url: site.url,
     siteName: site.name,
     locale: "en_US",
+    images: [
+      {
+        url: "/og-magnific.jpg",
+        width: 1920,
+        height: 1080,
+        alt: `${site.fullName} — Frontend Developer for Artlist`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.fullName} — Frontend Developer for Artlist`,
     description:
       "Built FELORA, MoodAI, Project Triton — solo. This very page is my Next.js application.",
+    images: ["/og-magnific.jpg"],
   },
   robots: {
     index: true,
@@ -91,7 +114,7 @@ export default function RootLayout({
     <html
       lang="en"
       dir="ltr"
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${heebo.variable} ${frankRuhlLibre.variable} antialiased`}
       suppressHydrationWarning
     >
       <head>
@@ -122,9 +145,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="relative min-h-svh">
-        <div className="aurora" aria-hidden />
-        <div className="grain" aria-hidden />
+      <body className="relative min-h-svh bg-paper text-ink">
         <LocaleProvider>{children}</LocaleProvider>
         <Analytics />
       </body>

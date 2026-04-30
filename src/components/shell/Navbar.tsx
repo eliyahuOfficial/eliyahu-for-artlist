@@ -1,63 +1,103 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
 import { useLocale } from "@/lib/locale-context";
 import { copy, pick } from "@/content/copy";
+import { site } from "@/lib/site";
 import { LangSwitch } from "./LangSwitch";
 
 export function Navbar() {
   const { locale } = useLocale();
   const { scrollY } = useScroll();
-  const blur = useTransform(scrollY, [0, 80], [0, 14]);
-  const bg = useTransform(scrollY, [0, 80], ["rgba(7,6,11,0)", "rgba(7,6,11,0.6)"]);
-  const border = useTransform(
-    scrollY,
-    [0, 80],
-    ["rgba(255,255,255,0)", "rgba(255,255,255,0.08)"],
-  );
+  const [scrolled, setScrolled] = useState(false);
+  const wa = `https://wa.me/${site.whatsapp.replace(/[^\d]/g, "")}`;
 
+  useMotionValueEvent(scrollY, "change", (y) => {
+    setScrolled(y > 60);
+  });
+
+  // When over the wine-gradient hero (top of page), use light text.
+  // Once scrolled past, switch to dark text on cream backdrop.
   return (
     <motion.header
-      style={{ backdropFilter: useTransform(blur, (b) => `blur(${b}px)`), background: bg, borderColor: border }}
-      className="sticky top-0 z-50 w-full border-b"
+      animate={{
+        backgroundColor: scrolled ? "rgba(240, 229, 210, 0.85)" : "rgba(240, 229, 210, 0)",
+        borderColor: scrolled ? "rgba(26, 14, 14, 0.08)" : "rgba(26, 14, 14, 0)",
+        backdropFilter: scrolled ? "blur(14px)" : "blur(0px)",
+      }}
+      transition={{ duration: 0.3 }}
+      className="fixed inset-x-0 top-0 z-50 border-b"
     >
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5">
-        <Link href="/" className="group flex items-center gap-2">
-          <span className="grid h-7 w-7 place-items-center rounded-full bg-gradient-to-br from-fuchsia-500 via-pink-500 to-orange-400 text-[10px] font-bold text-black">
+      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6">
+        <Link href="/" className="group flex items-center gap-2.5">
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-magenta text-[11px] font-bold text-white">
             E
           </span>
-          <span className="text-sm font-medium tracking-tight text-white/90 group-hover:text-white">
-            Eliyahu <span className="text-white/50">— for Artlist</span>
+          <span
+            className={`text-sm font-medium tracking-tight transition-colors ${
+              scrolled ? "text-ink" : "text-paper"
+            }`}
+          >
+            Eliyahu{" "}
+            <span className={scrolled ? "text-ink-muted" : "text-paper/55"}>
+              — for Artlist
+            </span>
           </span>
         </Link>
+
         <nav className="hidden items-center gap-7 md:flex">
-          <a className="text-sm text-white/70 hover:text-white" href="#work">
+          <NavLink href="#work" scrolled={scrolled}>
             {pick(copy.nav.work, locale)}
-          </a>
-          <a className="text-sm text-white/70 hover:text-white" href="#launch">
+          </NavLink>
+          <NavLink href="#launch" scrolled={scrolled}>
             {pick(copy.nav.launch, locale)}
-          </a>
-          <a className="text-sm text-white/70 hover:text-white" href="#about">
+          </NavLink>
+          <NavLink href="#about" scrolled={scrolled}>
             {locale === "he" ? "עליי" : "About"}
-          </a>
-          <a className="text-sm text-white/70 hover:text-white" href="#why">
+          </NavLink>
+          <NavLink href="#why" scrolled={scrolled}>
             {pick(copy.nav.why, locale)}
-          </a>
-          <a className="text-sm text-white/70 hover:text-white" href="#contact">
+          </NavLink>
+          <NavLink href="#contact" scrolled={scrolled}>
             {pick(copy.nav.contact, locale)}
-          </a>
+          </NavLink>
         </nav>
+
         <div className="flex items-center gap-3">
           <LangSwitch />
           <a
-            href="#contact"
-            className="hidden h-9 items-center justify-center rounded-full bg-white px-4 text-xs font-semibold text-black transition-colors hover:bg-white/90 md:inline-flex"
+            href={wa}
+            target="_blank"
+            rel="noreferrer"
+            className="hidden h-9 items-center justify-center rounded-full bg-magenta px-5 text-xs font-semibold text-white transition-colors hover:bg-magenta-bright md:inline-flex"
           >
             {pick(copy.nav.cta, locale)}
           </a>
         </div>
       </div>
     </motion.header>
+  );
+}
+
+function NavLink({
+  href,
+  scrolled,
+  children,
+}: {
+  href: string;
+  scrolled: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      className={`text-sm font-medium transition-colors ${
+        scrolled ? "text-ink-muted hover:text-ink" : "text-paper/75 hover:text-paper"
+      }`}
+    >
+      {children}
+    </a>
   );
 }

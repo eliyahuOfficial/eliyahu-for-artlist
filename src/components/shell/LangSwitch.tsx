@@ -8,7 +8,7 @@ export function LangSwitch({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "inline-flex h-9 items-center rounded-full border border-white/10 bg-white/5 p-1 text-xs font-medium",
+        "inline-flex h-9 items-center rounded-full border border-ink/15 bg-paper/70 p-1 text-xs font-medium backdrop-blur-sm",
         className,
       )}
       role="group"
@@ -19,7 +19,7 @@ export function LangSwitch({ className }: { className?: string }) {
         onClick={() => setLocale("en")}
         className={cn(
           "h-7 rounded-full px-3 transition-colors",
-          locale === "en" ? "bg-white text-black" : "text-white/70 hover:text-white",
+          locale === "en" ? "bg-ink text-paper" : "text-ink-muted hover:text-ink",
         )}
         aria-pressed={locale === "en"}
       >
@@ -30,7 +30,7 @@ export function LangSwitch({ className }: { className?: string }) {
         onClick={() => setLocale("he")}
         className={cn(
           "h-7 rounded-full px-3 transition-colors",
-          locale === "he" ? "bg-white text-black" : "text-white/70 hover:text-white",
+          locale === "he" ? "bg-ink text-paper" : "text-ink-muted hover:text-ink",
         )}
         aria-pressed={locale === "he"}
       >

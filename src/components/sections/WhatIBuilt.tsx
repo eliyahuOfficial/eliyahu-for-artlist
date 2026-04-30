@@ -16,102 +16,123 @@ export function WhatIBuilt() {
   const rest = projects.filter((p) => !p.featured);
 
   return (
-    <section id="work" className="relative mx-auto w-full max-w-6xl px-5 py-28 md:py-40">
-      <Reveal>
-        <p className="text-[11px] uppercase tracking-[0.24em] text-white/55">
-          {pick(copy.built.eyebrow, locale)}
-        </p>
-      </Reveal>
-      <Reveal delay={0.05}>
-        <h2 className="mt-3 max-w-3xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-          {pick(copy.built.title, locale)}
-        </h2>
-      </Reveal>
-      <Reveal delay={0.1}>
-        <p className="mt-5 max-w-2xl text-base text-white/60 md:text-lg">
-          {pick(copy.built.subtitle, locale)}
-        </p>
-      </Reveal>
-
-      {/* Featured project — FELORA gets the spotlight */}
-      {featured ? (
-        <Reveal delay={0.12}>
-          <FeaturedCard
-            accent={featured.accent}
-            name={featured.name}
-            badge={pick(copy.built.felora_badge, locale)}
-            tagline={pickL(featured.tagline, locale)}
-            description={pickL(featured.description, locale)}
-            pullQuote={pick(copy.built.felora_pull, locale)}
-            stack={featured.stack}
-            href={featured.href}
-            image={featured.image}
-            stats={featured.stats.map((s) => ({
-              label: pickL(s.label, locale),
-              value: s.value,
-            }))}
-          />
+    <section id="work" className="relative bg-paper pt-32 pb-20 md:pt-44 md:pb-24">
+      <div className="mx-auto w-full max-w-7xl px-6">
+        <Reveal>
+          <p className="launch-eyebrow">{pick(copy.built.eyebrow, locale)}</p>
         </Reveal>
-      ) : null}
+        <Reveal delay={0.05}>
+          <h2 className="launch-display mt-5 max-w-4xl text-balance text-[40px] sm:text-[52px] md:text-[80px] text-ink">
+            {pick(copy.built.title, locale)}
+          </h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-muted md:text-lg">
+            {pick(copy.built.subtitle, locale)}
+          </p>
+        </Reveal>
 
-      {/* The other projects */}
-      <div className="mt-6 grid gap-6 lg:grid-cols-2">
-        {rest.map((p, i) => (
-          <Reveal key={p.slug} delay={0.06 + i * 0.08}>
-            <ProjectCard
-              accent={p.accent}
-              name={p.name}
-              tagline={pickL(p.tagline, locale)}
-              description={pickL(p.description, locale)}
-              stack={p.stack}
-              href={p.href}
-              image={p.image}
-              stats={p.stats.map((s) => ({
+        {/* Featured project — FELORA gets the dark spotlight card */}
+        {featured ? (
+          <Reveal delay={0.12}>
+            <FeaturedCard
+              accent={featured.accent}
+              name={featured.name}
+              badge={pick(copy.built.felora_badge, locale)}
+              tagline={pickL(featured.tagline, locale)}
+              description={pickL(featured.description, locale)}
+              pullQuote={pick(copy.built.felora_pull, locale)}
+              stack={featured.stack}
+              href={featured.href}
+              image={featured.image}
+              stats={featured.stats.map((s) => ({
                 label: pickL(s.label, locale),
                 value: s.value,
               }))}
             />
           </Reveal>
-        ))}
-      </div>
+        ) : null}
 
-      {/* Client work strip — paid Elementor / WordPress builds */}
-      <Reveal delay={0.2}>
-        <a
-          href="https://shirafeder.co.il"
-          target="_blank"
-          rel="noreferrer"
-          className="group mt-12 flex flex-col gap-5 overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 transition-colors hover:bg-white/[0.04] md:flex-row md:items-center md:gap-6 md:p-6"
-        >
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/10 md:h-28 md:w-48 md:flex-shrink-0">
-            <Image
-              src="/shirafeder.jpg"
-              alt="shirafeder.co.il preview"
-              fill
-              sizes="(max-width: 768px) 100vw, 192px"
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-            />
+        {/* The other projects — alternating cream/wine cards */}
+        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+          {rest.map((p, i) => (
+            <Reveal key={p.slug} delay={0.06 + i * 0.08}>
+              <ProjectCard
+                accent={p.accent}
+                name={p.name}
+                tagline={pickL(p.tagline, locale)}
+                description={pickL(p.description, locale)}
+                stack={p.stack}
+                href={p.href}
+                image={p.image}
+                variant={i === 0 ? "wine" : "paper-deep"}
+                stats={p.stats.map((s) => ({
+                  label: pickL(s.label, locale),
+                  value: s.value,
+                }))}
+              />
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Client work strip — paid Elementor / WordPress builds */}
+        <Reveal delay={0.2}>
+          <a
+            href="https://shirafeder.co.il"
+            target="_blank"
+            rel="noreferrer"
+            className="group mt-12 flex flex-col gap-6 overflow-hidden rounded-3xl border border-ink/8 bg-paper-warm p-6 transition-colors hover:bg-paper-deep md:flex-row md:items-center md:p-8"
+          >
+            <div className="relative aspect-16/10 w-full overflow-hidden rounded-2xl border border-ink/10 md:h-32 md:w-56 md:flex-shrink-0">
+              <Image
+                src="/shirafeder.jpg"
+                alt="shirafeder.co.il preview"
+                fill
+                sizes="(max-width: 768px) 100vw, 224px"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+              />
+            </div>
+            <div className="md:flex-1">
+              <p className="launch-eyebrow">
+                {pick(copy.built.client_eyebrow, locale)}
+              </p>
+              <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-ink-soft">
+                {pick(copy.built.client_body, locale)}
+              </p>
+            </div>
+            <span className="inline-flex h-11 items-center justify-center gap-2 self-start rounded-full bg-ink px-5 text-xs font-semibold text-paper transition-colors group-hover:bg-ink-soft md:self-auto">
+              shirafeder.co.il
+              <ArrowUpRight
+                className="size-3.5 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                aria-hidden
+              />
+            </span>
+          </a>
+        </Reveal>
+
+        <Reveal delay={0.26}>
+          <div className="mt-16 flex flex-col gap-6 border-t border-ink/8 pt-12 md:flex-row md:items-end md:gap-10">
+            <div className="md:flex-shrink-0">
+              <span className="launch-display block text-[88px] leading-none text-magenta md:text-[128px]">
+                {pick(copy.built.client_volume_number, locale)}
+              </span>
+            </div>
+            <div className="md:pb-3">
+              <p className="launch-display text-[28px] leading-tight text-ink md:text-[40px]">
+                {pick(copy.built.client_volume_main, locale)}
+              </p>
+              <p className="mt-3 text-[15px] leading-relaxed text-ink-muted md:text-base">
+                {pick(copy.built.client_volume_sub, locale)}
+              </p>
+            </div>
           </div>
-          <div className="md:flex-1">
-            <p className="text-[10.5px] uppercase tracking-[0.22em] text-white/55">
-              {pick(copy.built.client_eyebrow, locale)}
-            </p>
-            <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/70">
-              {pick(copy.built.client_body, locale)}
-            </p>
-          </div>
-          <span className="inline-flex h-10 items-center justify-center gap-2 self-start rounded-full border border-white/10 bg-white/5 px-4 text-xs font-semibold text-white/85 transition-colors group-hover:bg-white/10 md:self-auto">
-            shirafeder.co.il
-            <ArrowUpRight className="size-3.5 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-          </span>
-        </a>
-      </Reveal>
+        </Reveal>
+      </div>
     </section>
   );
 }
 
 function FeaturedCard({
-  accent,
   name,
   badge,
   tagline,
@@ -142,71 +163,56 @@ function FeaturedCard({
       {...wrapperProps}
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 200, damping: 22 }}
-      className="group relative mt-12 block overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.025] p-1 backdrop-blur-md"
+      className="group relative mt-14 block overflow-hidden rounded-[36px] bg-card-dark text-paper"
     >
-      {/* Outer gradient ring */}
-      <div
-        className={cn(
-          "pointer-events-none absolute -inset-px -z-10 rounded-[32px] opacity-50 blur-xl transition-opacity duration-500 group-hover:opacity-80",
-          "bg-gradient-to-br",
-          accent,
-        )}
-      />
-      <div className="relative rounded-[28px] bg-black/55">
-        {image ? (
-          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-t-[28px] border-b border-white/10">
-            <Image
-              src={image}
-              alt={`${name} preview`}
-              fill
-              sizes="(max-width: 1024px) 100vw, 1024px"
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-              priority={false}
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-3">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-white/85 backdrop-blur-md">
-                <span className="size-1.5 animate-pulse rounded-full bg-emerald-400" />
-                Live · {href?.replace(/^https?:\/\//, "")}
-              </span>
-              <ArrowUpRight className="size-6 text-white/80 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white" />
-            </div>
+      {image ? (
+        <div className="relative aspect-21/9 w-full overflow-hidden border-b border-paper/10">
+          <Image
+            src={image}
+            alt={`${name} preview`}
+            fill
+            sizes="(max-width: 1024px) 100vw, 1280px"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            priority={false}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-card-dark via-card-dark/30 to-transparent" />
+          <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-3">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-card-dark/80 px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-paper/85 backdrop-blur-md">
+              <span className="size-1.5 animate-pulse rounded-full bg-emerald-400" />
+              Live · {href?.replace(/^https?:\/\//, "")}
+            </span>
+            <ArrowUpRight className="size-7 text-paper/80 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-paper" />
           </div>
-        ) : null}
-        <div className="grid gap-10 p-8 md:p-12 lg:grid-cols-[1.2fr_1fr]">
+        </div>
+      ) : null}
+      <div className="grid gap-12 p-10 md:p-14 lg:grid-cols-[1.2fr_1fr]">
         <div>
           <div className="flex flex-wrap items-center gap-3">
-            <div
-              className={cn(
-                "h-7 rounded-full bg-gradient-to-r px-3 text-[10px] font-bold uppercase tracking-[0.2em] text-black",
-                accent,
-                "flex items-center",
-              )}
-            >
+            <div className="rounded-full bg-magenta px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-white">
               {name}
             </div>
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-fuchsia-300/30 bg-fuchsia-300/5 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-fuchsia-200">
-              <Sparkles className="size-3" aria-hidden />
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-paper/15 bg-paper/5 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-paper/85">
+              <Sparkles className="size-3 text-magenta" aria-hidden />
               {badge}
             </div>
           </div>
 
-          <h3 className="mt-6 text-balance text-3xl font-semibold leading-[1.08] tracking-tight md:text-4xl">
+          <h3 className="launch-display mt-7 text-balance text-[34px] md:text-[48px] text-paper">
             {tagline}
           </h3>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70">
+          <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-paper/70 md:text-lg">
             {description}
           </p>
 
-          <blockquote className="relative mt-6 max-w-xl rounded-2xl border border-fuchsia-300/15 bg-gradient-to-br from-fuchsia-500/10 via-violet-500/5 to-transparent p-5 text-sm leading-relaxed text-white/80">
+          <blockquote className="relative mt-7 max-w-xl rounded-2xl border border-magenta/30 bg-magenta/8 p-6 text-[15px] leading-relaxed text-paper/85">
             {pullQuote}
           </blockquote>
 
-          <div className="mt-7 flex flex-wrap gap-1.5">
+          <div className="mt-8 flex flex-wrap gap-1.5">
             {stack.map((s) => (
               <span
                 key={s}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[10.5px] font-medium text-white/70"
+                className="rounded-full border border-paper/12 bg-paper/4 px-3 py-1.5 text-[11px] font-medium text-paper/75"
               >
                 {s}
               </span>
@@ -218,33 +224,31 @@ function FeaturedCard({
           {stats.map((s) => (
             <div
               key={s.label}
-              className="rounded-2xl border border-white/[0.07] bg-black/50 p-4"
+              className="rounded-2xl border border-paper/8 bg-paper/4 p-5"
             >
-              <dt className="text-[10px] uppercase tracking-[0.18em] text-white/45">
+              <dt className="text-[10px] uppercase tracking-[0.18em] text-paper/45">
                 {s.label}
               </dt>
-              <dd className="mt-1.5 text-xl font-semibold tracking-tight text-white">
+              <dd className="launch-display mt-2 text-[24px] text-paper">
                 {s.value}
               </dd>
             </div>
           ))}
-          <div className="col-span-2 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4">
+          <div className="col-span-2 rounded-2xl bg-magenta p-5 text-white">
             <div className="flex items-center justify-between">
-              <p className="text-[11px] uppercase tracking-[0.18em] text-white/45">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-white/85">
                 {href ? `Visit · ${href.replace(/^https?:\/\//, "")}` : "Live in production"}
               </p>
-              <ArrowUpRight className="size-5 text-white/40 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white" />
+              <ArrowUpRight className="size-5 text-white/85 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white" />
             </div>
           </div>
         </dl>
-        </div>
       </div>
     </Wrapper>
   );
 }
 
 function ProjectCard({
-  accent,
   name,
   tagline,
   description,
@@ -252,6 +256,7 @@ function ProjectCard({
   stats,
   href,
   image,
+  variant,
 }: {
   accent: string;
   name: string;
@@ -261,85 +266,110 @@ function ProjectCard({
   stats: { label: string; value: string }[];
   href?: string;
   image?: string;
+  variant: "wine" | "paper-deep";
 }) {
   const Wrapper = href ? motion.a : motion.article;
   const wrapperProps = href
     ? { href, target: "_blank" as const, rel: "noreferrer" }
     : {};
+  const styles =
+    variant === "wine"
+      ? {
+          bg: "bg-wine",
+          title: "text-paper",
+          body: "text-paper/70",
+          chip: "bg-paper/8 text-paper/85 border-paper/15",
+          name: "bg-magenta text-white",
+          stat: "border-paper/10 bg-paper/4",
+          statLabel: "text-paper/55",
+          statValue: "text-paper",
+          arrow: "text-paper/45 group-hover:text-paper",
+        }
+      : {
+          bg: "bg-paper-deep",
+          title: "text-ink",
+          body: "text-ink-muted",
+          chip: "bg-ink/5 text-ink-soft border-ink/10",
+          name: "bg-ink text-paper",
+          stat: "border-ink/10 bg-paper-warm",
+          statLabel: "text-ink-muted",
+          statValue: "text-ink",
+          arrow: "text-ink/40 group-hover:text-ink",
+        };
+
   return (
     <Wrapper
       {...wrapperProps}
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 200, damping: 22 }}
-      className="group relative block h-full overflow-hidden rounded-3xl border border-white/[0.07] bg-white/[0.025] backdrop-blur-md"
+      className={cn(
+        "group relative block h-full overflow-hidden rounded-[28px]",
+        styles.bg,
+      )}
     >
-      <div
-        className={cn(
-          "pointer-events-none absolute -inset-1 -z-10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-40",
-          "bg-gradient-to-br",
-          accent,
-        )}
-      />
       {image ? (
-        <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-white/10">
+        <div className={cn("relative aspect-16/9 w-full overflow-hidden border-b", variant === "wine" ? "border-paper/10" : "border-ink/10")}>
           <Image
             src={image}
             alt={`${name} preview`}
             fill
-            sizes="(max-width: 1024px) 100vw, 480px"
+            sizes="(max-width: 1024px) 100vw, 600px"
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-        </div>
-      ) : null}
-      <div className="p-7">
-      <div className="flex items-center justify-between">
-        <div
-          className={cn(
-            "h-7 rounded-full bg-gradient-to-r px-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-black",
-            accent,
-            "flex items-center",
-          )}
-        >
-          {name}
-        </div>
-        <ArrowUpRight className="size-5 text-white/30 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white" />
-      </div>
-
-      <h3 className="mt-5 text-2xl font-semibold leading-tight tracking-tight">
-        {tagline}
-      </h3>
-      <p className="mt-3 text-sm leading-relaxed text-white/60">{description}</p>
-
-      <dl className="mt-6 grid grid-cols-2 gap-3">
-        {stats.map((s) => (
           <div
-            key={s.label}
-            className="rounded-xl border border-white/5 bg-black/30 p-3"
-          >
-            <dt className="text-[10px] uppercase tracking-wider text-white/45">
-              {s.label}
-            </dt>
-            <dd className="mt-1 text-base font-semibold text-white">{s.value}</dd>
-          </div>
-        ))}
-      </dl>
-
-      <div className="mt-6 flex flex-wrap gap-1.5">
-        {stack.map((s) => (
-          <span
-            key={s}
-            className="rounded-full border border-white/8 bg-white/[0.03] px-2.5 py-1 text-[10.5px] font-medium text-white/65"
-          >
-            {s}
-          </span>
-        ))}
-      </div>
-      {href ? (
-        <p className="mt-5 text-[11px] uppercase tracking-[0.18em] text-white/40">
-          Visit · {href.replace(/^https?:\/\//, "")}
-        </p>
+            className={cn(
+              "pointer-events-none absolute inset-0",
+              variant === "wine"
+                ? "bg-linear-to-t from-wine via-wine/30 to-transparent"
+                : "bg-linear-to-t from-paper-deep/70 via-paper-deep/10 to-transparent",
+            )}
+          />
+        </div>
       ) : null}
+      <div className="p-8 md:p-10">
+        <div className="flex items-center justify-between">
+          <div className={cn("rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em]", styles.name)}>
+            {name}
+          </div>
+          <ArrowUpRight className={cn("size-5 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1", styles.arrow)} />
+        </div>
+
+        <h3 className={cn("launch-display mt-6 text-[26px] md:text-[32px]", styles.title)}>
+          {tagline}
+        </h3>
+        <p className={cn("mt-4 text-[15px] leading-relaxed", styles.body)}>{description}</p>
+
+        <dl className="mt-7 grid grid-cols-2 gap-3">
+          {stats.map((s) => (
+            <div
+              key={s.label}
+              className={cn("rounded-xl border p-3.5", styles.stat)}
+            >
+              <dt className={cn("text-[10px] uppercase tracking-wider", styles.statLabel)}>
+                {s.label}
+              </dt>
+              <dd className={cn("launch-display mt-1.5 text-[18px]", styles.statValue)}>
+                {s.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        <div className="mt-6 flex flex-wrap gap-1.5">
+          {stack.map((s) => (
+            <span
+              key={s}
+              className={cn("rounded-full border px-2.5 py-1 text-[10.5px] font-medium", styles.chip)}
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+        {href ? (
+          <p className={cn("mt-5 text-[11px] uppercase tracking-[0.18em]", styles.statLabel)}>
+            Visit · {href.replace(/^https?:\/\//, "")}
+          </p>
+        ) : null}
       </div>
     </Wrapper>
   );

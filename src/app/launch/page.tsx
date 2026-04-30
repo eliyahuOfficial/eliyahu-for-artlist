@@ -20,16 +20,16 @@ export default function LaunchPage() {
     <>
       <LaunchTopBanner />
 
-      <header className="relative z-20 mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-5">
+      <header className="relative z-20 mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/75 transition-colors hover:bg-white/10"
+          className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-paper-deep/40 px-4 py-2 text-xs font-medium text-ink-soft transition-colors hover:bg-paper-deep/70"
         >
           <ArrowLeft className="size-3.5" aria-hidden />
           Back to Eliyahu&apos;s application
         </Link>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-fuchsia-400/30 bg-fuchsia-400/5 px-3 py-1.5 text-[10px] uppercase tracking-[0.2em] text-fuchsia-200">
-          <Sparkles className="size-3" aria-hidden />
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-paper">
+          <Sparkles className="size-3 text-magenta" aria-hidden />
           Demo · Not a real product
         </span>
       </header>

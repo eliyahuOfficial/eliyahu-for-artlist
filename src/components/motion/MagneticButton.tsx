@@ -37,10 +37,10 @@ export function MagneticButton({
 
   const styles =
     variant === "primary"
-      ? "bg-white text-black hover:bg-white/90"
+      ? "bg-paper text-ink hover:bg-paper-warm"
       : variant === "secondary"
-        ? "glass text-white hover:bg-white/10"
-        : "text-white/80 hover:text-white";
+        ? "border border-paper/25 bg-paper/5 text-paper backdrop-blur-sm hover:bg-paper/10"
+        : "text-paper/80 hover:text-paper";
 
   return (
     <motion.a

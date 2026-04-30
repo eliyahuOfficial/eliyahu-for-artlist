@@ -20,8 +20,10 @@ export default function LaunchLayout({
 }) {
   return (
     <LocaleProvider>
-      <main className="relative">{children}</main>
-      <Footer />
+      <div className="launch-paper relative min-h-svh">
+        <main className="relative">{children}</main>
+        <Footer />
+      </div>
     </LocaleProvider>
   );
 }

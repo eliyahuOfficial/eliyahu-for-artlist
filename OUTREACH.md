@@ -62,7 +62,7 @@ Two versions. Pick the language of the recipient's profile.
 >
 > הדף עצמו משתמש בכל מה שמוגדר אצלכם כדרישה — App Router, SSG + ISR, GSAP ScrollTrigger, Framer Motion, Tailwind, Lighthouse 95+ — ויש בתוכו גם דף השקה היפותטי של Artlist Sync שנבנה ב-48 שעות. הקוד פתוח ב-GitHub.
 >
-> רקע: אני מוזיקאי (Eliyahu IL בסטרימינג) שהשיק לבד את FELORA — SaaS וידאו AI מרובה-לקוחות. אני לא הותיק ב-Next.js שאתם מחפשים; אני הגרסה של אותו מהנדס שסוגר את הפער על-ידי בנייה פומבית.
+> רקע: אני מוזיקאי (Eliyahu IL בסטרימינג) שהשיק לבד את FELORA — SaaS וידאו AI. אני לא הותיק ב-Next.js שאתם מחפשים; אני הגרסה של אותו מהנדס שסוגר את הפער על-ידי בנייה פומבית.
 >
 > אם הדף מדבר אליכם, אשמח לחצי שעה מתי שנוח.
 >
@@ -132,11 +132,11 @@ Even with a landing page, ATS systems may demand a PDF. Build it in Figma or as 
 1. **Header** — name, role line ("Frontend Developer · Tel Aviv"), email · phone · LinkedIn · GitHub · `{{LANDING_URL}}` (this is the headline). One line.
 2. **Summary** — three sentences. The first must say "I built FELORA solo." The second must name Artlist by name and reference Marketing Technology. The third names the music alias.
 3. **Selected work** — three rows, no bullets, project names bolded:
-   - **FELORA** — what + tech + 1 number ("164 TS files, 0 lint warnings, multi-workspace + Stripe + RTL i18n")
+   - **FELORA** — what + tech + 1 number ("164 TS files, 0 lint warnings, multi-workspace + end-to-end checkout + RTL i18n")
    - **MoodAI** — what + tech + 1 number ("32+ pages, Framer Motion, full SEO/JSON-LD, PWA")
    - **Project Triton** — what + tech + 1 number ("322 hand-coded section templates")
 4. **This application page** — one line: "Built in Next.js 16 with GSAP + Framer Motion. SSG + ISR. Source on GitHub."
-5. **Stack** — comma list, prioritised: React · Next.js · TypeScript · Tailwind · Framer Motion · GSAP · Node.js · Express · MongoDB · Stripe · AI SDKs (OpenAI, FAL, ElevenLabs)
+5. **Stack** — comma list, prioritised: React · Next.js · TypeScript · Tailwind · Framer Motion · GSAP · Node.js · Express · MongoDB · AI SDKs (OpenAI, FAL, ElevenLabs)
 6. **Education** — HackerU graduate, year. Nothing else.
 7. **Footer** — "Music: Eliyahu (IL) on Spotify / SoundCloud" — keeps your dual identity present.
 

@@ -12,88 +12,93 @@ export function MockLaunchPreview() {
   const { locale } = useLocale();
 
   return (
-    <section id="launch" className="relative mx-auto w-full max-w-6xl px-5 py-28 md:py-40">
-      <div className="relative overflow-hidden rounded-[40px] border border-white/[0.08] bg-gradient-to-br from-white/[0.05] via-white/[0.02] to-transparent p-8 md:p-14">
-        {/* Decorative SVG marker */}
-        <Marker />
+    <section
+      id="launch"
+      className="relative mx-auto w-full max-w-7xl px-5 pt-12 pb-28 md:pt-20 md:pb-40"
+    >
+      {/* Magnific-style two-column hero card */}
+      <div className="relative grid gap-0 overflow-hidden rounded-[40px] border border-white/6 lg:grid-cols-[1.1fr_1fr]">
+        {/* Left — paper-cream side with dark text (Magnific signature) */}
+        <div className="relative bg-paper p-10 md:p-16">
+          <Reveal>
+            <span className="inline-flex items-center gap-2 rounded-full bg-ink/5 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-ink-soft">
+              <Sparkles className="size-3.5 text-magenta" aria-hidden />
+              {pick(copy.pearl.eyebrow, locale)}
+            </span>
+          </Reveal>
 
-        <div className="relative grid gap-12 lg:grid-cols-[1.1fr_1fr]">
-          <div>
-            <Reveal>
-              <div className="inline-flex items-center gap-2 rounded-full border border-fuchsia-400/30 bg-fuchsia-400/5 px-3 py-1.5 text-[11px] uppercase tracking-[0.2em] text-fuchsia-200">
-                <Sparkles className="size-3.5" aria-hidden />
-                {pick(copy.pearl.eyebrow, locale)}
-              </div>
-            </Reveal>
+          <Reveal delay={0.08}>
+            <h2 className="launch-display mt-7 text-balance text-[36px] sm:text-[48px] md:text-[64px] text-ink">
+              {pick(copy.pearl.title, locale)}
+            </h2>
+          </Reveal>
 
-            <Reveal delay={0.08}>
-              <h2 className="mt-5 text-balance text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl">
-                {pick(copy.pearl.title, locale)}
-              </h2>
-            </Reveal>
+          <Reveal delay={0.14}>
+            <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-ink-muted md:text-lg">
+              {pick(copy.pearl.subtitle, locale)}
+            </p>
+          </Reveal>
 
-            <Reveal delay={0.14}>
-              <p className="mt-5 max-w-xl text-base text-white/65 md:text-lg">
-                {pick(copy.pearl.subtitle, locale)}
-              </p>
-            </Reveal>
+          <Reveal delay={0.2}>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link
+                href="/launch"
+                className="launch-cta-pink inline-flex h-13 items-center gap-2 px-7 py-4 text-sm font-semibold"
+              >
+                {pick(copy.pearl.cta, locale)}
+                <ArrowRight className="size-4" aria-hidden />
+              </Link>
+              <a
+                href="https://github.com/eliyahuOfficial/eliyahu-for-artlist"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex h-13 items-center gap-2 rounded-full border border-ink/15 bg-paper-warm px-7 py-4 text-sm font-medium text-ink transition-colors hover:bg-paper-deep"
+              >
+                <GithubMark className="size-4" aria-hidden />
+                {pick(copy.pearl.cta_source, locale)}
+              </a>
+            </div>
+          </Reveal>
 
-            <Reveal delay={0.2}>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href="/launch"
-                  className="inline-flex h-12 items-center gap-2 rounded-full bg-white px-6 text-sm font-semibold text-black transition-colors hover:bg-white/90"
-                >
-                  {pick(copy.pearl.cta, locale)}
-                  <ArrowRight className="size-4" aria-hidden />
-                </Link>
-                <a
-                  href="https://github.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex h-12 items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-6 text-sm font-medium text-white/85 transition-colors hover:bg-white/10"
-                >
-                  <GithubMark className="size-4" aria-hidden />
-                  {pick(copy.pearl.cta_source, locale)}
-                </a>
-              </div>
-            </Reveal>
+          <Reveal delay={0.28}>
+            <ul className="mt-10 grid grid-cols-2 gap-x-5 gap-y-2.5 text-[12px] text-ink-muted sm:grid-cols-3">
+              <Spec label="Next.js 16" />
+              <Spec label="App Router · SSG + ISR" />
+              <Spec label="GSAP ScrollTrigger" />
+              <Spec label="Framer Motion" />
+              <Spec label="Lighthouse 95+" />
+              <Spec label="A/B via URL param" />
+            </ul>
+          </Reveal>
+        </div>
 
-            <Reveal delay={0.28}>
-              <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-[11px] text-white/55">
-                <Spec label="Next.js 16" />
-                <Spec label="App Router · SSG + ISR" />
-                <Spec label="GSAP ScrollTrigger" />
-                <Spec label="Framer Motion" />
-                <Spec label="Lighthouse 95+" />
-                <Spec label="A/B via URL param" />
-              </div>
-            </Reveal>
-          </div>
+        {/* Right — wine-gradient side with mock product visual */}
+        <div className="launch-hero-bg relative isolate overflow-hidden p-10 md:p-16">
+          <DiagonalAccents />
 
-          {/* Preview card mock */}
           <Reveal delay={0.16}>
             <motion.div
-              initial={{ rotate: -1.5 }}
-              whileInView={{ rotate: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-fuchsia-500/30 via-violet-600/20 to-orange-500/30 p-1"
+              initial={{ rotate: -1.5, opacity: 0 }}
+              whileInView={{ rotate: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className="relative mx-auto aspect-4/5 w-full max-w-sm overflow-hidden rounded-3xl border border-paper/15 bg-card-dark p-1 shadow-[0_30px_120px_-20px_rgba(232,57,143,0.5)]"
             >
-              <div className="relative h-full w-full overflow-hidden rounded-[20px] bg-black">
+              <div className="relative h-full w-full overflow-hidden rounded-[20px] bg-card-dark">
                 <motion.div
-                  className="absolute -left-1/3 top-1/4 h-72 w-[180%] -rotate-6 bg-gradient-to-r from-transparent via-white/[0.07] to-transparent"
+                  className="absolute -left-1/3 top-1/4 h-72 w-[180%] -rotate-6 bg-linear-to-r from-transparent via-paper/8 to-transparent"
                   animate={{ x: ["-20%", "120%"] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
                 />
                 <div className="absolute inset-0 grid place-items-center">
                   <div className="text-center">
-                    <p className="text-[10px] uppercase tracking-[0.4em] text-white/40">
+                    <p className="text-[10px] uppercase tracking-[0.4em] text-paper/45">
                       Coming up
                     </p>
-                    <p className="mt-2 text-3xl font-semibold tracking-tight text-white">
-                      Artlist <span className="gradient-text">Sync™</span>
+                    <p className="launch-display mt-3 text-[36px] text-paper">
+                      Artlist <span className="text-magenta">Sync™</span>
                     </p>
-                    <p className="mt-1 text-xs text-white/55">A launch page mock</p>
+                    <p className="mt-2 text-xs text-paper/55">A launch page mock</p>
                   </div>
                 </div>
               </div>
@@ -107,29 +112,37 @@ export function MockLaunchPreview() {
 
 function Spec({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5">
-      <span className="size-1 rounded-full bg-fuchsia-400" />
+    <li className="inline-flex items-center gap-2">
+      <span className="size-1 rounded-full bg-magenta" />
       {label}
-    </span>
+    </li>
   );
 }
 
-function Marker() {
+function DiagonalAccents() {
   return (
     <svg
       aria-hidden
-      className="pointer-events-none absolute right-8 top-8 size-24 opacity-30 md:right-14 md:top-14 md:size-36"
-      viewBox="0 0 200 200"
+      className="pointer-events-none absolute inset-0 h-full w-full opacity-50"
+      preserveAspectRatio="none"
+      viewBox="0 0 800 1000"
     >
-      <defs>
-        <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#ff5f9e" />
-          <stop offset="100%" stopColor="#5cf6ff" />
-        </linearGradient>
-      </defs>
-      <circle cx="100" cy="100" r="80" fill="none" stroke="url(#mg)" strokeWidth="0.6" />
-      <circle cx="100" cy="100" r="55" fill="none" stroke="url(#mg)" strokeWidth="0.6" />
-      <circle cx="100" cy="100" r="30" fill="none" stroke="url(#mg)" strokeWidth="0.6" />
+      <line
+        x1="-100"
+        y1="1100"
+        x2="700"
+        y2="-100"
+        stroke="rgba(232, 57, 143, 0.7)"
+        strokeWidth="1.5"
+      />
+      <line
+        x1="200"
+        y1="1200"
+        x2="1000"
+        y2="0"
+        stroke="rgba(232, 57, 143, 0.4)"
+        strokeWidth="1.5"
+      />
     </svg>
   );
 }
