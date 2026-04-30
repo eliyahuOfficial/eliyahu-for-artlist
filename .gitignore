@@ -51,3 +51,6 @@ AGENTS.md
 OUTREACH.md
 IMAGE_PROMPTS.md
 scripts/
+
+# Generated CV PDFs — produced from /cv route, not source-controlled
+*.pdf

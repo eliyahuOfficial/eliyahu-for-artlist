@@ -258,12 +258,12 @@ section {
   width: 210mm;
   max-width: calc(100vw - 2rem);
   min-height: 297mm;
-  padding: 18mm 18mm;
+  padding: 13mm 14mm;
   border-radius: 4px;
   /* Use Hebrew-aware sans even when locale is en — Heebo is also a fine Latin font */
   font-family: var(--font-geist-sans), var(--font-heebo), Arial, sans-serif;
-  font-size: 10.5pt;
-  line-height: 1.45;
+  font-size: 10pt;
+  line-height: 1.4;
   color: var(--color-ink);
 }
 
@@ -286,7 +286,7 @@ section {
 .cv-name {
   font-family: var(--font-fraunces), var(--font-frank-ruhl), Georgia, serif;
   font-weight: 700;
-  font-size: 26pt;
+  font-size: 22pt;
   letter-spacing: -0.02em;
   line-height: 1;
   margin: 0;
@@ -294,17 +294,17 @@ section {
 }
 
 .cv-role {
-  margin-top: 4pt;
-  font-size: 11.5pt;
+  margin-top: 3pt;
+  font-size: 10.5pt;
   color: var(--color-ink-soft);
   font-weight: 500;
 }
 
 .cv-contact {
-  margin-top: 8pt;
-  font-size: 9.5pt;
+  margin-top: 5pt;
+  font-size: 8.5pt;
   color: var(--color-ink-muted);
-  line-height: 1.5;
+  line-height: 1.45;
 }
 .cv-contact a {
   color: var(--color-ink-soft);
@@ -325,12 +325,12 @@ section {
 .cv-rule {
   border: 0;
   border-top: 1px solid rgba(26, 14, 14, 0.15);
-  margin: 9mm 0 6mm;
+  margin: 5mm 0 4mm;
 }
 
 .cv-summary {
-  font-size: 11pt;
-  line-height: 1.55;
+  font-size: 10pt;
+  line-height: 1.5;
   color: var(--color-ink);
 }
 .cv-summary strong {
@@ -338,56 +338,59 @@ section {
 }
 
 .cv-section {
-  margin-top: 6mm;
+  margin-top: 3.5mm;
 }
 
 .cv-h2 {
   font-family: var(--font-fraunces), var(--font-frank-ruhl), Georgia, serif;
   font-weight: 700;
-  font-size: 11pt;
+  font-size: 9pt;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--color-magenta);
-  margin: 0 0 3mm;
+  margin: 0 0 1.5mm;
 }
 
 .cv-rows {
   display: flex;
   flex-direction: column;
-  gap: 4mm;
+  gap: 2.5mm;
 }
 
 .cv-row-head {
   display: flex;
   align-items: baseline;
-  gap: 12pt;
+  gap: 10pt;
   flex-wrap: wrap;
 }
 .cv-row-name {
   font-family: var(--font-fraunces), var(--font-frank-ruhl), Georgia, serif;
   font-weight: 700;
-  font-size: 13pt;
+  font-size: 11.5pt;
   color: var(--color-ink);
 }
 .cv-row-link {
-  font-size: 9pt;
+  font-size: 8.5pt;
   color: var(--color-magenta);
   text-decoration: none;
 }
 .cv-row-line {
-  margin-top: 2pt;
-  font-size: 10.5pt;
+  margin-top: 1pt;
+  font-size: 9.5pt;
+  line-height: 1.4;
   color: var(--color-ink-soft);
 }
 .cv-row-stack {
-  margin-top: 2pt;
-  font-size: 9pt;
+  margin-top: 1pt;
+  font-size: 8.5pt;
   color: var(--color-ink-muted);
   font-style: italic;
+  line-height: 1.4;
 }
 
 .cv-line {
-  font-size: 10.5pt;
+  font-size: 9.5pt;
+  line-height: 1.45;
   color: var(--color-ink-soft);
 }
 .cv-line a {
@@ -395,9 +398,9 @@ section {
 }
 
 .cv-stack {
-  font-size: 10pt;
+  font-size: 9pt;
   color: var(--color-ink-soft);
-  line-height: 1.5;
+  line-height: 1.45;
 }
 .cv-stack strong {
   color: var(--color-ink);
@@ -405,10 +408,10 @@ section {
 }
 
 .cv-footer {
-  margin-top: 8mm;
-  padding-top: 4mm;
+  margin-top: 4mm;
+  padding-top: 2.5mm;
   border-top: 1px solid rgba(26, 14, 14, 0.15);
-  font-size: 9.5pt;
+  font-size: 8.5pt;
   color: var(--color-ink-muted);
 }
 .cv-footer a {
@@ -419,8 +422,8 @@ section {
   color: var(--color-magenta);
 }
 .cv-meta {
-  margin-top: 2pt;
-  font-size: 8.5pt;
+  margin-top: 1pt;
+  font-size: 7.5pt;
 }
 
 /* ----- Print-specific rules ----- */
@@ -448,7 +451,7 @@ section {
     box-shadow: none;
     margin: 0;
     border-radius: 0;
-    padding: 14mm 16mm;
+    padding: 11mm 13mm;
   }
   .cv-content a {
     color: inherit;
