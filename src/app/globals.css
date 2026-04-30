@@ -247,6 +247,220 @@ section {
   border-top: 1px solid rgba(26, 14, 14, 0.08);
 }
 
+/* ==========================================================================
+   CV one-pager — A4 print sheet
+   ========================================================================== */
+.cv-page {
+  min-height: 100vh;
+}
+
+.cv-sheet {
+  width: 210mm;
+  max-width: calc(100vw - 2rem);
+  min-height: 297mm;
+  padding: 18mm 18mm;
+  border-radius: 4px;
+  /* Use Hebrew-aware sans even when locale is en — Heebo is also a fine Latin font */
+  font-family: var(--font-geist-sans), var(--font-heebo), Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+  color: var(--color-ink);
+}
+
+.cv-printbar {
+  background: var(--color-magenta);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 11pt;
+  margin-bottom: 14mm;
+}
+.cv-printbar kbd {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.9em;
+}
+
+.cv-name {
+  font-family: var(--font-fraunces), var(--font-frank-ruhl), Georgia, serif;
+  font-weight: 700;
+  font-size: 26pt;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+  color: var(--color-ink);
+}
+
+.cv-role {
+  margin-top: 4pt;
+  font-size: 11.5pt;
+  color: var(--color-ink-soft);
+  font-weight: 500;
+}
+
+.cv-contact {
+  margin-top: 8pt;
+  font-size: 9.5pt;
+  color: var(--color-ink-muted);
+  line-height: 1.5;
+}
+.cv-contact a {
+  color: var(--color-ink-soft);
+  text-decoration: none;
+}
+.cv-contact a:hover {
+  color: var(--color-magenta);
+}
+.cv-contact .cv-url {
+  color: var(--color-magenta);
+  font-weight: 500;
+}
+.cv-sep {
+  color: var(--color-ink-muted);
+  margin: 0 4pt;
+}
+
+.cv-rule {
+  border: 0;
+  border-top: 1px solid rgba(26, 14, 14, 0.15);
+  margin: 9mm 0 6mm;
+}
+
+.cv-summary {
+  font-size: 11pt;
+  line-height: 1.55;
+  color: var(--color-ink);
+}
+.cv-summary strong {
+  font-weight: 600;
+}
+
+.cv-section {
+  margin-top: 6mm;
+}
+
+.cv-h2 {
+  font-family: var(--font-fraunces), var(--font-frank-ruhl), Georgia, serif;
+  font-weight: 700;
+  font-size: 11pt;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-magenta);
+  margin: 0 0 3mm;
+}
+
+.cv-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 4mm;
+}
+
+.cv-row-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12pt;
+  flex-wrap: wrap;
+}
+.cv-row-name {
+  font-family: var(--font-fraunces), var(--font-frank-ruhl), Georgia, serif;
+  font-weight: 700;
+  font-size: 13pt;
+  color: var(--color-ink);
+}
+.cv-row-link {
+  font-size: 9pt;
+  color: var(--color-magenta);
+  text-decoration: none;
+}
+.cv-row-line {
+  margin-top: 2pt;
+  font-size: 10.5pt;
+  color: var(--color-ink-soft);
+}
+.cv-row-stack {
+  margin-top: 2pt;
+  font-size: 9pt;
+  color: var(--color-ink-muted);
+  font-style: italic;
+}
+
+.cv-line {
+  font-size: 10.5pt;
+  color: var(--color-ink-soft);
+}
+.cv-line a {
+  color: var(--color-magenta);
+}
+
+.cv-stack {
+  font-size: 10pt;
+  color: var(--color-ink-soft);
+  line-height: 1.5;
+}
+.cv-stack strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.cv-footer {
+  margin-top: 8mm;
+  padding-top: 4mm;
+  border-top: 1px solid rgba(26, 14, 14, 0.15);
+  font-size: 9.5pt;
+  color: var(--color-ink-muted);
+}
+.cv-footer a {
+  color: var(--color-ink-soft);
+  text-decoration: none;
+}
+.cv-footer a:hover {
+  color: var(--color-magenta);
+}
+.cv-meta {
+  margin-top: 2pt;
+  font-size: 8.5pt;
+}
+
+/* ----- Print-specific rules ----- */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    background: white;
+    color: black;
+  }
+  .cv-page {
+    background: white;
+    min-height: auto;
+  }
+  .cv-printbar {
+    display: none;
+  }
+  .cv-sheet {
+    width: 210mm;
+    min-height: auto;
+    box-shadow: none;
+    margin: 0;
+    border-radius: 0;
+    padding: 14mm 16mm;
+  }
+  .cv-content a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .cv-row-link,
+  .cv-line a,
+  .cv-contact .cv-url {
+    color: var(--color-magenta) !important;
+  }
+}
+
 /* Focus rings */
 :focus-visible {
   outline: 2px solid var(--color-brand-1);
