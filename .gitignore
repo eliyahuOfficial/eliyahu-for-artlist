@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local tooling caches (context-brain, fastembed, claude state)
+.context-brain.db*
+.fastembed_cache/
+.claude/
